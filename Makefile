@@ -55,12 +55,12 @@ LIBTCL =
 
 # Compiler options needed for programs that use the readline() library.
 #
-READLINE_FLAGS = -DHAVE_READLINE=1 -I/usr/include/readline
+READLINE_FLAGS = -DHAVE_READLINE=0 
 READLINE_FLAGS += -DHAVE_EDITLINE=0
 
 # The library that programs using readline() must link against.
 #
-LIBREADLINE = -lreadline -lncurses 
+LIBREADLINE = 
 
 # Should the database engine be compiled threadsafe
 #
@@ -82,7 +82,7 @@ TEMP_STORE = -DSQLITE_TEMP_STORE=2
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_MEMSYS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
+OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS3
 
 TCC += $(OPT_FEATURE_FLAGS)
 
