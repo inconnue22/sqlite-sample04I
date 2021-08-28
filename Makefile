@@ -64,11 +64,11 @@ LIBREADLINE =
 
 # Should the database engine be compiled threadsafe
 #
-TCC += -DSQLITE_THREADSAFE=0
+TCC += -DSQLITE_THREADSAFE=1
 
 # Any target libraries which libsqlite must be linked against
 #
-TLIBS = -lm -ldl -lz  $(LIBS)
+TLIBS = -lm -ldl -lz -lpthread  $(LIBS)
 
 # Flags controlling use of the in memory btree implementation
 #
@@ -82,7 +82,7 @@ TEMP_STORE = -DSQLITE_TEMP_STORE=2
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS3
+OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT -DSQLITE_ENABLE_RTREE
 
 TCC += $(OPT_FEATURE_FLAGS)
 
@@ -154,7 +154,7 @@ bindir = ${exec_prefix}/bin
 includedir = ${prefix}/include
 INSTALL = /usr/bin/install -c
 LIBTOOL = ./libtool
-ALLOWRELEASE = 
+ALLOWRELEASE = -release 3.35.4
 
 # libtool compile/link/install
 LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(TCC) $(LTCOMPILE_EXTRAS)
