@@ -76,13 +76,13 @@ TLIBS = -lm -ldl -lz  $(LIBS)
 # default to file, 2 to default to memory, and 3 to force temporary
 # tables to always be in memory.
 #
-TEMP_STORE = -DSQLITE_TEMP_STORE=2
+TEMP_STORE = -DSQLITE_TEMP_STORE=1
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS3
+OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
 
 TCC += $(OPT_FEATURE_FLAGS)
 
@@ -164,7 +164,7 @@ LTINSTALL = $(LIBTOOL) --mode=install $(INSTALL)
 # You should not have to change anything below this line
 ###############################################################################
 
-USE_AMALGAMATION = 1
+USE_AMALGAMATION = 0
 
 # Object files for the SQLite library (non-amalgamation).
 #
