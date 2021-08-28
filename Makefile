@@ -64,11 +64,11 @@ LIBREADLINE =
 
 # Should the database engine be compiled threadsafe
 #
-TCC += -DSQLITE_THREADSAFE=1
+TCC += -DSQLITE_THREADSAFE=0
 
 # Any target libraries which libsqlite must be linked against
 #
-TLIBS = -lm -ldl -lz -lpthread  $(LIBS)
+TLIBS = -lm -lz  $(LIBS)
 
 # Flags controlling use of the in memory btree implementation
 #
@@ -76,13 +76,13 @@ TLIBS = -lm -ldl -lz -lpthread  $(LIBS)
 # default to file, 2 to default to memory, and 3 to force temporary
 # tables to always be in memory.
 #
-TEMP_STORE = -DSQLITE_TEMP_STORE=2
+TEMP_STORE = -DSQLITE_TEMP_STORE=1
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT -DSQLITE_ENABLE_RTREE
+OPT_FEATURE_FLAGS = -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5 -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
 
 TCC += $(OPT_FEATURE_FLAGS)
 
