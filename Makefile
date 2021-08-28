@@ -154,7 +154,7 @@ bindir = ${exec_prefix}/bin
 includedir = ${prefix}/include
 INSTALL = /usr/bin/install -c
 LIBTOOL = ./libtool
-ALLOWRELEASE = -release 3.35.4
+ALLOWRELEASE = 
 
 # libtool compile/link/install
 LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(TCC) $(LTCOMPILE_EXTRAS)
@@ -164,7 +164,7 @@ LTINSTALL = $(LIBTOOL) --mode=install $(INSTALL)
 # You should not have to change anything below this line
 ###############################################################################
 
-USE_AMALGAMATION = 0
+USE_AMALGAMATION = 1
 
 # Object files for the SQLite library (non-amalgamation).
 #
