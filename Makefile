@@ -68,7 +68,7 @@ TCC += -DSQLITE_THREADSAFE=0
 
 # Any target libraries which libsqlite must be linked against
 #
-TLIBS = -lm -lm -lz  $(LIBS)
+TLIBS = -lm -ldl -lz  $(LIBS)
 
 # Flags controlling use of the in memory btree implementation
 #
@@ -76,13 +76,13 @@ TLIBS = -lm -lm -lz  $(LIBS)
 # default to file, 2 to default to memory, and 3 to force temporary
 # tables to always be in memory.
 #
-TEMP_STORE = -DSQLITE_TEMP_STORE=1
+TEMP_STORE = -DSQLITE_TEMP_STORE=2
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS = -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
+OPT_FEATURE_FLAGS =  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_FTS3
 
 TCC += $(OPT_FEATURE_FLAGS)
 
@@ -154,7 +154,7 @@ bindir = ${exec_prefix}/bin
 includedir = ${prefix}/include
 INSTALL = /usr/bin/install -c
 LIBTOOL = ./libtool
-ALLOWRELEASE = -release 3.35.4
+ALLOWRELEASE = 
 
 # libtool compile/link/install
 LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(TCC) $(LTCOMPILE_EXTRAS)
