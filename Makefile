@@ -55,20 +55,20 @@ LIBTCL =
 
 # Compiler options needed for programs that use the readline() library.
 #
-READLINE_FLAGS = -DHAVE_READLINE=1 -I/usr/include/readline
+READLINE_FLAGS = -DHAVE_READLINE=0 
 READLINE_FLAGS += -DHAVE_EDITLINE=0
 
 # The library that programs using readline() must link against.
 #
-LIBREADLINE = -lreadline -lncurses 
+LIBREADLINE = 
 
 # Should the database engine be compiled threadsafe
 #
-TCC += -DSQLITE_THREADSAFE=1
+TCC += -DSQLITE_THREADSAFE=0
 
 # Any target libraries which libsqlite must be linked against
 #
-TLIBS = -lm -lm -lz -lpthread  $(LIBS)
+TLIBS = -lm -lm -lz  $(LIBS)
 
 # Flags controlling use of the in memory btree implementation
 #
@@ -82,7 +82,7 @@ TEMP_STORE = -DSQLITE_TEMP_STORE=1
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
 # The same set of OMIT and ENABLE flags should be passed to the
 # LEMON parser generator and the mkkeywordhash tool as well.
-OPT_FEATURE_FLAGS = -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5 -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_UPDATE_DELETE_LIMIT -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
+OPT_FEATURE_FLAGS = -DSQLITE_OMIT_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMSYS5 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_GEOPOLY -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_SESSION -DSQLITE_ENABLE_PREUPDATE_HOOK
 
 TCC += $(OPT_FEATURE_FLAGS)
 
