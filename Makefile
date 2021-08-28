@@ -55,20 +55,20 @@ LIBTCL =
 
 # Compiler options needed for programs that use the readline() library.
 #
-READLINE_FLAGS = -DHAVE_READLINE=0 
+READLINE_FLAGS = -DHAVE_READLINE=1 -I/usr/include/readline
 READLINE_FLAGS += -DHAVE_EDITLINE=0
 
 # The library that programs using readline() must link against.
 #
-LIBREADLINE = 
+LIBREADLINE = -lreadline -lncurses 
 
 # Should the database engine be compiled threadsafe
 #
-TCC += -DSQLITE_THREADSAFE=1
+TCC += -DSQLITE_THREADSAFE=0
 
 # Any target libraries which libsqlite must be linked against
 #
-TLIBS = -lm -lz -lpthread  $(LIBS)
+TLIBS = -lm -lz  $(LIBS)
 
 # Flags controlling use of the in memory btree implementation
 #
@@ -76,7 +76,7 @@ TLIBS = -lm -lz -lpthread  $(LIBS)
 # default to file, 2 to default to memory, and 3 to force temporary
 # tables to always be in memory.
 #
-TEMP_STORE = -DSQLITE_TEMP_STORE=1
+TEMP_STORE = -DSQLITE_TEMP_STORE=2
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).
@@ -154,7 +154,7 @@ bindir = ${exec_prefix}/bin
 includedir = ${prefix}/include
 INSTALL = /usr/bin/install -c
 LIBTOOL = ./libtool
-ALLOWRELEASE = -release 3.35.4
+ALLOWRELEASE = 
 
 # libtool compile/link/install
 LTCOMPILE = $(LIBTOOL) --mode=compile --tag=CC $(TCC) $(LTCOMPILE_EXTRAS)
@@ -164,7 +164,7 @@ LTINSTALL = $(LIBTOOL) --mode=install $(INSTALL)
 # You should not have to change anything below this line
 ###############################################################################
 
-USE_AMALGAMATION = 0
+USE_AMALGAMATION = 1
 
 # Object files for the SQLite library (non-amalgamation).
 #
